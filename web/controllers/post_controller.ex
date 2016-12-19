@@ -9,7 +9,7 @@ defmodule BigSnips.PostController do
   end
 
   def new(conn, _params) do
-    changeset = Post.changeset(%Post{})
+    changeset = Post.changeset(%Post{snippets: [ %BigSnips.Snippet{} ]})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -27,18 +27,18 @@ defmodule BigSnips.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets)
     render(conn, "show.html", post: post)
   end
 
   def edit(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets)
     changeset = Post.changeset(post)
     render(conn, "edit.html", post: post, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
-    post = Repo.get!(Post, id)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets)
     changeset = Post.changeset(post, post_params)
 
     case Repo.update(changeset) do

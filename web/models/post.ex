@@ -4,6 +4,7 @@ defmodule BigSnips.Post do
   schema "posts" do
     field :title, :string
     field :visibility, :integer
+    field :is_private, :boolean
     has_many :snippets, BigSnips.Snippet
     belongs_to :user, BigSnips.User
     timestamps()
@@ -15,6 +16,8 @@ defmodule BigSnips.Post do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:title, :visibility])
-    |> validate_required([:title, :visibility])
+    |> validate_required([:title])
+    |> cast_assoc(:snippets)
+    
   end
 end
