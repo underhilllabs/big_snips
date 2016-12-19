@@ -1,0 +1,18 @@
+<h2>Show snippet</h2>
+
+<ul>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @snippet.body %>
+  </li>
+
+  <li>
+    <strong>Filename:</strong>
+    <%= @snippet.filename %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: snippet_path(@conn, :edit, @snippet) %>
+<%= link "Back", to: snippet_path(@conn, :index) %>

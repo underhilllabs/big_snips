@@ -1,0 +1,6 @@
+<h2>Edit snippet</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: snippet_path(@conn, :update, @snippet) %>
+
+<%= link "Back", to: snippet_path(@conn, :index) %>

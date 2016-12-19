@@ -1,0 +1,28 @@
+<h2>Listing snippets</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Filename</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for snippet <- @snippets do %>
+    <tr>
+      <td><%= snippet.body %></td>
+      <td><%= snippet.filename %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: snippet_path(@conn, :show, snippet), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: snippet_path(@conn, :edit, snippet), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: snippet_path(@conn, :delete, snippet), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New snippet", to: snippet_path(@conn, :new) %>
