@@ -1,18 +1,9 @@
-<h2>Show post</h2>
-
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Visibility:</strong>
-    <%= @post.visibility %>
-  </li>
-
-</ul>
-
+<h2><%= @post.title %></h2>
+  <%= for snippet <- @post.snippets do %>
+    <h5><%= snippet.filename %></h5>
+      
+    <pre><code class="language-elixir"><%= snippet.body %></code></pre>
+  <% end %>
+  
 <%= link "Edit", to: post_path(@conn, :edit, @post) %>
 <%= link "Back", to: post_path(@conn, :index) %>
