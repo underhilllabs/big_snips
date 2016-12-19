@@ -12,11 +12,25 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :visibility, class: "control-label" %>
-    <%= number_input f, :visibility, class: "form-control" %>
-    <%= error_tag f, :visibility %>
+    <%= label f, :is_private, class: "control-label" %>
+    <%= checkbox f, :is_private, class: "form-control" %>
+    <%= error_tag f, :is_private %>
   </div>
 
+  <%= inputs_for f, :snippets, fn sn -> %>
+    <div class="form-group">
+      <%= label sn, :filename, class: "control-label" %>
+      <%= text_input sn, :filename, class: "form-control" %>
+      <%= error_tag sn, :filename %>
+    </div>
+
+    <div class="form-group">
+      <%= label sn, :body, class: "control-label" %>
+      <%= textarea sn, :body, class: "form-control", rows: 6, wrap: "off", cols: 90 %>
+      <%= error_tag sn, :body %>
+    </div>
+  <% end %>
+    
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
