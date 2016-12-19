@@ -9,6 +9,7 @@
 
     <title>Hello BigSnips!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/prism.css") %>">
   </head>
 
   <body>
@@ -31,5 +32,6 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/prism.js") %>"></script>
   </body>
 </html>
