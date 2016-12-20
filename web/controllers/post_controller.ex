@@ -8,6 +8,7 @@ defmodule BigSnips.PostController do
     posts = from(p in Post, 
                  order_by: [desc: p.updated_at])
             |> preload(:snippets)
+            |> preload(:tags)
             |> Repo.all
     render(conn, "index.html", posts: posts)
   end
@@ -18,6 +19,7 @@ defmodule BigSnips.PostController do
 								 where: p.user_id == ^user_id,
                  order_by: [desc: p.updated_at])
             |> preload(:snippets)
+            |> preload(:tags)
             |> Repo.all
     render(conn, "user.html", posts: posts, user: user)
   end
@@ -42,18 +44,18 @@ defmodule BigSnips.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id) |> Repo.preload(:snippets)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets) |> Repo.preload(:tags)
     render(conn, "show.html", post: post)
   end
 
   def edit(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id) |> Repo.preload(:snippets)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets) |> Repo.preload(:tags)
     changeset = Post.changeset(post)
     render(conn, "edit.html", post: post, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
-    post = Repo.get!(Post, id) |> Repo.preload(:snippets)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets) |> Repo.preload(:tags)
     changeset = Post.changeset(post, post_params)
 
     case Repo.update(changeset) do

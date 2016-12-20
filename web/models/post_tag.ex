@@ -13,7 +13,7 @@ defmodule BigSnips.PostTag do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [])
-    |> validate_required([])
+    |> cast(params, [:post_id, :tag_id])
+    |> validate_required([:post_id, :tag_id])
   end
 end

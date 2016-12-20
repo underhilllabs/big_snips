@@ -17,6 +17,12 @@
     <%= error_tag f, :is_private %>
   </div>
 
+  <div class="form-group">
+    <%= label f, :tags, class: "control-label" %>
+    <%= text_input f, :tags, class: "form-control" %>
+    <%= error_tag f, :tags %>
+  </div>
+
   <%= inputs_for f, :snippets, fn sn -> %>
     <div class="form-group">
       <%= label sn, :filename, class: "control-label" %>
