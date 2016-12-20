@@ -17,11 +17,12 @@ defmodule BigSnips.Router do
   scope "/", BigSnips do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", PostController, :index
     resources "/users", UserController
     resources "/posts", PostController
     resources "/snippets", SnippetController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/posts/user/:id", PostController, :user
   end
 
   # Other scopes may use custom stacks.

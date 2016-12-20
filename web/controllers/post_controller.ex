@@ -5,8 +5,21 @@ defmodule BigSnips.PostController do
   alias BigSnips.Post
 
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    posts = from(p in Post, 
+                 order_by: [desc: p.updated_at])
+            |> preload(:snippets)
+            |> Repo.all
     render(conn, "index.html", posts: posts)
+  end
+
+  def user(conn, %{"id" => user_id}) do
+		user = Repo.get!(BigSnips.User, user_id)
+    posts = from(p in Post, 
+								 where: p.user_id == ^user_id,
+                 order_by: [desc: p.updated_at])
+            |> preload(:snippets)
+            |> Repo.all
+    render(conn, "user.html", posts: posts, user: user)
   end
 
   def new(conn, _params) do

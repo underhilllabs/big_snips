@@ -1,4 +1,4 @@
-<h2>Snippets</h2>
+<h2><%= String.capitalize @user.username%>'s Snippets</h2>
 
 <%= for post <- @posts do %>
   <a href="/posts/<%= post.id %>"><h2><%= post.title %></h2></a>

@@ -5,6 +5,7 @@
     <tr>
       <th>Username</th>
       <th>Email</th>
+      <th>Snippets</th>
 
       <th></th>
     </tr>
@@ -14,11 +15,11 @@
     <tr>
       <td><%= user.username %></td>
       <td><%= user.email %></td>
+      <td><a href="/posts/user/<%= user.id %>">View Snippets</a></td>
 
       <td class="text-right">
         <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>

@@ -8,11 +8,6 @@
   </li>
 
   <li>
-    <strong>Password hash:</strong>
-    <%= @user.password_hash %>
-  </li>
-
-  <li>
     <strong>Email:</strong>
     <%= @user.email %>
   </li>
