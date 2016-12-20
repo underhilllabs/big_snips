@@ -3,6 +3,7 @@ defmodule BigSnips.User do
 
   schema "users" do
     field :name, :string
+    field :username, :string
     field :password_hash, :string
     field :password, :string, virtual: true
     field :email, :string
@@ -15,8 +16,8 @@ defmodule BigSnips.User do
   """
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(name password email))
-    |> validate_required([:password, :email])
+    |> cast(params, ~w(name username password email))
+    |> validate_required([:password, :email, :username])
   end
 
   def registration_changeset(model, params) do 

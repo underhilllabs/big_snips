@@ -9,7 +9,7 @@ defmodule BigSnips.SessionController do
     case BigSnips.Auth.login_by_username_and_pass(conn, user, pass, repo: Repo) do
       {:ok, conn} ->
         conn
-        |> put_flash(:info, "Welcome back!")
+        |> put_flash(:info, "Welcome back from Seamus and Sherman!")
         |> redirect(to: post_path(conn, :index))
       {:error, _reason, conn} ->
         conn

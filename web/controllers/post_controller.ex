@@ -1,5 +1,6 @@
 defmodule BigSnips.PostController do
   use BigSnips.Web, :controller
+  plug :authenticate when action in [:edit, :new, :update, :create, :delete]
 
   alias BigSnips.Post
 
@@ -14,7 +15,8 @@ defmodule BigSnips.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
-    changeset = Post.changeset(%Post{}, post_params)
+    post = %Post{user_id: conn.assigns.current_user.id}
+    changeset = Post.changeset(post, post_params)
 
     case Repo.insert(changeset) do
       {:ok, _post} ->
@@ -61,5 +63,16 @@ defmodule BigSnips.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: post_path(conn, :index))
+  end
+
+  defp authenticate(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must be logged in to access that page")
+      |> redirect(to: session_path(conn, :new))
+      |> halt()
+    end
   end
 end
