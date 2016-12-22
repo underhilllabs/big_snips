@@ -2,7 +2,8 @@
   <%= for snippet <- @post.snippets do %>
     <h5><%= snippet.filename %></h5>
       
-    <pre><code class="language-<%= snippet.language %>"><%= snippet.body %></code></pre>
+    <pre><code class="xhljs language-<%= snippet.language %> <%= snippet.language %>"><%= snippet.body %></code></pre>
+
   <% end %>
   
 <%= link "Edit", to: post_path(@conn, :edit, @post) %>

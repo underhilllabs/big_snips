@@ -2,10 +2,11 @@
 
 <%= for post <- @posts do %>
   <a href="/posts/<%= post.id %>"><h2><%= post.title %></h2></a>
+  <div class="snippet-tags"><%= raw(BigSnips.Post.tag_link(post.tags)) %></div>
   <%= for snippet <- post.snippets do %>
     <h5><%= snippet.filename %></h5>
     <div>
-      <pre><code class="language-elixir"><%= snippet.body %></code></pre>
+      <pre><code class="xhljs language-<%= snippet.language %> <%= snippet.language %>"><%= snippet.body %></code></pre>
     </div>
   <% end %>
 <% end %>
