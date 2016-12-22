@@ -49,8 +49,10 @@ defmodule BigSnips.PostController do
   end
 
   def edit(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id) |> Repo.preload(:snippets) |> Repo.preload(:tags)
-    changeset = Post.changeset(post)
+    post = Repo.get!(Post, id) |> Repo.preload(:snippets) |> Repo.preload([:tags])
+    %Post{tags: tags} = post
+    tagstr = tags |> Enum.map(&(&1.name)) |> Enum.join(", ")
+    changeset = Post.changeset(post, %{tags: tagstr})
     render(conn, "edit.html", post: post, changeset: changeset)
   end
 
