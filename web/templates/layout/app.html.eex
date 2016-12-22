@@ -8,8 +8,8 @@
     <meta name="author" content="">
 
     <title>Hello BigSnips!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/prism.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
@@ -27,6 +27,7 @@
             <li><a href="/posts/user/<%= @current_user.id %>">My Snippets</a></li>
           <% end %>
           <li><a href="/users/">Users</a></li>
+          <li><a href="/tags/">Tags</a></li>
           <%= if @current_user do %>
             <li><a href="/posts/new">Add a Snippet</a></li>
           <% end %>
@@ -56,7 +57,9 @@
       </main>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery-3.1.1.min.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/bootstrap.min.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/prism.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
