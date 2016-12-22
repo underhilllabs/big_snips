@@ -1,0 +1,7 @@
+<h2>Tags Listing</h2>
+
+<%= for tag_count <- @tags_count,
+      [tag, count] = tag_count do %>
+    <div><a href="/tags/name/<%= tag %>"><%= tag %></a> (<%= count %>)</div>
+
+<% end %>
