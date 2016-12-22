@@ -7,7 +7,7 @@
   <%= for snippet <- post.snippets do %>
     <h5><%= snippet.filename %></h5>
     <div>
-      <pre><code class="language-elixir"><%= snippet.body %></code></pre>
+      <pre><code class="language-<%= snippet.language %>"><%= snippet.body %></code></pre>
     </div>
   <% end %>
 <% end %>
