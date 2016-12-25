@@ -12,12 +12,7 @@ defmodule BigSnips.PostController do
             |> Repo.paginate(params)
     render conn, "index.html", 
       page: page,
-      posts: page.entries,
-      page_number: page.page_number,
-      page_size: page.page_size,
-      total_pages: page.total_pages,
-      total_entries: page.total_entries
-
+      posts: page.entries
   end
 
   def user(conn, params) do
@@ -32,11 +27,7 @@ defmodule BigSnips.PostController do
     render conn, "user.html", 
       page: page,
       posts: page.entries, 
-      user: user,
-      page_number: page.page_number,
-      page_size: page.page_size,
-      total_pages: page.total_pages,
-      total_entries: page.total_entries
+      user: user
   end
 
   def new(conn, _params) do

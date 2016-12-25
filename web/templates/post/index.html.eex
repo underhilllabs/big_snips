@@ -12,7 +12,6 @@
   <% end %>
 <% end %>
 
-<%= link "New post", to: post_path(@conn, :new) %>
 <div class="pagination-wrapper center span7">
   <%= pagination_links @page %>
 </div>
