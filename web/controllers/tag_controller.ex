@@ -18,19 +18,16 @@ defmodule BigSnips.TagController do
 
   def name(conn, params) do
     %{"name" => name} = params
-    posts = from(p in BigSnips.Post,
+    page = from(p in BigSnips.Post,
                     join: pt in PostTag, on: p.id == pt.post_id,
                     join: t in Tag, on: t.id == pt.tag_id,
                     where: t.name == ^name,
                     order_by: [desc: p.updated_at],
                     preload: [:tags, :snippets])
-                #|> Repo.paginate(params) 
-                |> Repo.all
-    render conn, "name.html", name: name, posts: posts
-      #bookmarks: page.entries,
-      #page_number: page.page_number,
-      #page_size: page.page_size,
-      #total_pages: page.total_pages,
-      #total_entries: page.total_entries
+                |> Repo.paginate(params) 
+    render conn, "name.html", 
+      name: name, 
+      posts: page.entries,
+      page: page
   end
 end

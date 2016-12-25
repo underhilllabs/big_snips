@@ -14,3 +14,6 @@
   <% end %>
 </div>
 
+<div class="pagination-wrapper center span7">
+  <%= pagination_links @page %>
+</div>
