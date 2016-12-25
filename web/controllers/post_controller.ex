@@ -4,24 +4,39 @@ defmodule BigSnips.PostController do
 
   alias BigSnips.Post
 
-  def index(conn, _params) do
-    posts = from(p in Post, 
+  def index(conn, params) do
+    page = from(p in Post, 
                  order_by: [desc: p.updated_at])
             |> preload(:snippets)
             |> preload(:tags)
-            |> Repo.all
-    render(conn, "index.html", posts: posts)
+            |> Repo.paginate(params)
+    render conn, "index.html", 
+      page: page,
+      posts: page.entries,
+      page_number: page.page_number,
+      page_size: page.page_size,
+      total_pages: page.total_pages,
+      total_entries: page.total_entries
+
   end
 
-  def user(conn, %{"id" => user_id}) do
+  def user(conn, params) do
+    %{"id" => user_id} = params
 		user = Repo.get!(BigSnips.User, user_id)
-    posts = from(p in Post, 
+    page = from(p in Post, 
 								 where: p.user_id == ^user_id,
                  order_by: [desc: p.updated_at])
             |> preload(:snippets)
             |> preload(:tags)
-            |> Repo.all
-    render(conn, "user.html", posts: posts, user: user)
+            |> Repo.paginate(params)
+    render conn, "user.html", 
+      page: page,
+      posts: page.entries, 
+      user: user,
+      page_number: page.page_number,
+      page_size: page.page_size,
+      total_pages: page.total_pages,
+      total_entries: page.total_entries
   end
 
   def new(conn, _params) do

@@ -1,5 +1,6 @@
 defmodule BigSnips.UserController do
   use BigSnips.Web, :controller
+  plug :authenticate when action in [:edit, :update, :delete]
 
   alias BigSnips.User
 
@@ -34,8 +35,14 @@ defmodule BigSnips.UserController do
 
   def edit(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
-    changeset = User.changeset(user)
-    render(conn, "edit.html", user: user, changeset: changeset)
+    if user != conn.assigns.current_user do
+       conn
+       |> put_flash(:info, "You cannot edit another user.")
+       |> redirect(to: user_path(conn, :index))
+    else 
+      changeset = User.changeset(user)
+      render(conn, "edit.html", user: user, changeset: changeset)
+    end
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
@@ -62,5 +69,16 @@ defmodule BigSnips.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: user_path(conn, :index))
+  end
+
+  defp authenticate(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must be logged in to access that page")
+      |> redirect(to: session_path(conn, :new))
+      |> halt()
+    end
   end
 end

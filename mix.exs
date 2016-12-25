@@ -19,7 +19,7 @@ defmodule BigSnips.Mixfile do
   def application do
     [mod: {BigSnips, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :comeonin, :phoenix_ecto, :mariaex]]
+                    :scrivener, :scrivener_ecto, :scrivener_html, :comeonin, :phoenix_ecto, :mariaex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,6 +39,9 @@ defmodule BigSnips.Mixfile do
      {:gettext, "~> 0.11"},
      {:guardian, "~> 0.13.0"},
      {:comeonin, "~> 2.6"},
+     {:scrivener, "~> 2.0"},
+     {:scrivener_html, "~> 1.1"},
+     {:scrivener_ecto, "~> 1.0"},
      {:cowboy, "~> 1.0"}]
   end
 
