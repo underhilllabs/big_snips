@@ -1,0 +1,5 @@
+<h5><%= @snippet.filename %></h5>
+     
+<div>
+  <pre><code class="language-<%= @snippet.language %> <%= @snippet.language %>"><%= @snippet.body %></code></pre>
+</div>

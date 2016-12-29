@@ -1,0 +1,6 @@
+<h5><%= @snippet.filename %></h5>
+      
+
+<div class="markdown">
+  <%= raw(Earmark.to_html(@snippet.body)) %>
+</div>

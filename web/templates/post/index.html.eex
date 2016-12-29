@@ -5,10 +5,11 @@
   <div class="snippet-tags"><%= raw(BigSnips.Post.tag_link(post.tags)) %></div>
 
   <%= for snippet <- post.snippets do %>
-    <h5><%= snippet.filename %></h5>
-    <div>
-      <pre><code class="xhljs language-<%= snippet.language %> <%= snippet.language %>"><%= snippet.body %></code></pre>
-    </div>
+    <%= if snippet.language == "markdown" do %>
+      <%= render BigSnips.PostView, "show_markdown.html", conn: @conn, snippet: snippet %>
+    <%= else  %>
+      <%= render BigSnips.PostView, "show_code.html", conn: @conn, snippet: snippet %>
+    <% end %>
   <% end %>
 <% end %>
 
