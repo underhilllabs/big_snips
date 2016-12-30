@@ -1,0 +1,5 @@
+<%= if @snippet.language == "markdown" do %>
+  <%= render BigSnips.PostView, "show_markdown.html", conn: @conn, snippet: @snippet %>
+<%= else  %>
+  <%= render BigSnips.PostView, "show_code.html", conn: @conn, snippet: @snippet %>
+<% end %>

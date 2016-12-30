@@ -1,10 +1,6 @@
 <h2><%= @post.title %></h2>
   <%= for snippet <- @post.snippets do %>
-    <%= if snippet.language == "markdown" do %>
-      <%= render BigSnips.PostView, "show_markdown.html", conn: @conn, snippet: snippet %>
-    <%= else  %>
-      <%= render BigSnips.PostView, "show_code.html", conn: @conn, snippet: snippet %>
-    <% end %>
+    <%= render BigSnips.PostView, "show_snippet.html", conn: @conn, snippet: snippet %>
   <% end %>
   
 <%= link "Edit", to: post_path(@conn, :edit, @post) %>
