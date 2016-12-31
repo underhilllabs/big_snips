@@ -18,7 +18,7 @@ defmodule BigSnips.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {BigSnips, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :earmark,
                     :scrivener, :scrivener_ecto, :scrivener_html, :comeonin, :phoenix_ecto, :mariaex]]
   end
 
@@ -38,6 +38,7 @@ defmodule BigSnips.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:guardian, "~> 0.13.0"},
+     {:earmark, "~> 1.0.0"},
      {:comeonin, "~> 2.6"},
      {:scrivener, "~> 2.0"},
      {:scrivener_html, "~> 1.1"},
