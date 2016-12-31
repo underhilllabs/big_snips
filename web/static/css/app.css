@@ -1,5 +1,20 @@
-/* This file is for your main application css. */
 div.snippet-tags span.tag {
   background: #efefef;
   padding: 0.3em;
+}
+
+div.markdown table {
+    border: 1px gray solid;
+}
+div.markdown  th {
+    background: #ffefff;
+    border: 1px gray solid;
+    padding: 0.3em;
+}
+div.markdown  tr:nth-child(even) {
+    background: #efefef;
+}
+div.markdown  td {
+    border: 1px gray solid;
+    padding: 0.3em;
 }
