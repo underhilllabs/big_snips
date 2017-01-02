@@ -1,12 +1,16 @@
 <h2>Snippets</h2>
 
 <%= for post <- @posts do %>
-  <a href="/posts/<%= post.id %>"><h2><%= post.title %></h2></a>
-  <div class="snippet-tags"><%= raw(BigSnips.Post.tag_link(post.tags)) %></div>
+  <div class="post-wrapper">
+    <a href="/posts/<%= post.id %>"><h2><%= post.title %></h2></a>
+    <div class="snippet-tags"><%= raw(BigSnips.Post.tag_link(post.tags)) %></div>
 
-  <%= for snippet <- post.snippets do %>
-    <%= render BigSnips.PostView, "show_snippet.html", conn: @conn, snippet: snippet %>
-  <% end %>
+    <%= for snippet <- post.snippets do %>
+      <div class="snippet-wrapper">
+        <%= render BigSnips.PostView, "show_snippet.html", conn: @conn, snippet: snippet %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <div class="pagination-wrapper center span7">

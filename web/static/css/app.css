@@ -22,3 +22,7 @@ div.markdown  td {
   margin-top: 1.1em;
   display: block;
 }
+div.post-wrapper {
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
