@@ -4,17 +4,21 @@ div.snippet-tags span.tag {
 }
 
 div.markdown table {
-    border: 1px gray solid;
+  border: 1px gray solid;
 }
 div.markdown  th {
-    background: #ffefff;
-    border: 1px gray solid;
-    padding: 0.3em;
+  background: #ffefff;
+  border: 1px gray solid;
+  padding: 0.3em;
 }
 div.markdown  tr:nth-child(even) {
-    background: #efefef;
+  background: #efefef;
 }
 div.markdown  td {
-    border: 1px gray solid;
-    padding: 0.3em;
+  border: 1px gray solid;
+  padding: 0.3em;
+}
+.navbar-nav li form.link {
+  margin-top: 1.1em;
+  display: block;
 }
