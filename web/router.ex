@@ -20,7 +20,7 @@ defmodule BigSnips.Router do
     get "/", PostController, :index
     resources "/users", UserController
     resources "/posts", PostController
-    resources "/snippets", SnippetController
+    resources "/snippets", SnippetController, only: [:index]
     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/tags/name/:name", TagController, :name
     get "/tags/", TagController, :index
