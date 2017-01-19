@@ -8,8 +8,8 @@
     <meta name="author" content="">
 
     <title>Hello BigSnips!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/prism.css") %>">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/prism.css") %>" data-no-reload>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>" >
   </head>
 
   <body>
@@ -57,9 +57,9 @@
       </main>
 
     </div> <!-- /container -->
-    <script src="<%= static_path(@conn, "/js/jquery-3.1.1.min.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/bootstrap.min.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/prism.js") %>"></script>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/jquery-3.1.1.min.js") %>" data-no-reload></script>
+    <script src="<%= static_path(@conn, "/js/bootstrap.min.js") %>" data-no-reload></script>
+    <script src="<%= static_path(@conn, "/js/prism.js") %>" data-no-reload></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>" data-no-reload></script>
   </body>
 </html>
