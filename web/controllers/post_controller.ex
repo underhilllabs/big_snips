@@ -17,9 +17,9 @@ defmodule BigSnips.PostController do
 
   def user(conn, params) do
     %{"id" => user_id} = params
-		user = Repo.get!(BigSnips.User, user_id)
+    user = Repo.get!(BigSnips.User, user_id)
     page = from(p in Post, 
-								 where: p.user_id == ^user_id,
+                 where: p.user_id == ^user_id,
                  order_by: [desc: p.updated_at])
             |> preload(:snippets)
             |> preload(:tags)
