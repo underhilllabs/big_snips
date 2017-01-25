@@ -6,7 +6,7 @@ defmodule BigSnips.Post do
     field :visibility, :integer
     field :is_private, :boolean
     has_many :snippets, BigSnips.Snippet
-		many_to_many :tags, BigSnips.Tag, join_through: BigSnips.PostTag, on_replace: :delete
+    many_to_many :tags, BigSnips.Tag, join_through: BigSnips.PostTag, on_replace: :delete
     belongs_to :user, BigSnips.User
     timestamps()
   end
