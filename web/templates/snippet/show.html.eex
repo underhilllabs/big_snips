@@ -14,5 +14,3 @@
 
 </ul>
 
-<%= link "Edit", to: snippet_path(@conn, :edit, @snippet) %>
-<%= link "Back", to: snippet_path(@conn, :index) %>
