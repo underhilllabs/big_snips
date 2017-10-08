@@ -14,4 +14,4 @@
 
 </ul>
 
-<%= link "Back", to: user_path(@conn, :index) %>
+<%= link "Back", to: user_path(@conn, :index), class: ["btn", "btn-primary"] %>

@@ -6,7 +6,8 @@
     <div class="snippet-tags"><%= raw(BigSnips.Post.tag_link(post.tags)) %></div>
 
     <%= for snippet <- post.snippets do %>
-      <div class="snippet-wrapper">
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#snippet-<%= snippet.id%>"> -- </button>
+      <div class="snippet-wrapper collapse in" id="snippet-<%= snippet.id %>">
         <%= render BigSnips.PostView, "show_snippet.html", conn: @conn, snippet: snippet %>
       </div>
     <% end %>

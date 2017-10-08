@@ -26,3 +26,6 @@ div.post-wrapper {
   padding-bottom: 1em;
   padding-top: 1em;
 }
+div.edit-buttons a {
+  padding-right: .7em;
+}

@@ -3,5 +3,7 @@
     <%= render BigSnips.PostView, "show_snippet.html", conn: @conn, snippet: snippet %>
   <% end %>
   
-<%= link "Edit", to: post_path(@conn, :edit, @post) %>
-<%= link "Back", to: post_path(@conn, :index) %>
+<div class="edit-buttons">
+  <%= link "Edit", to: post_path(@conn, :edit, @post), class: ["btn btn-primary"] %>
+  <%= link "Back", to: post_path(@conn, :index), class: ["btn btn-primary"]%>
+</div>
