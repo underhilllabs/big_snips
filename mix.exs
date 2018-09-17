@@ -39,6 +39,7 @@ defmodule BigSnips.Mixfile do
      {:gettext, "~> 0.11"},
      {:guardian, "~> 0.13.0"},
      {:earmark, "~> 1.0.0"},
+     {:distillery, "~> 2.0"},
      {:comeonin, "~> 2.6"},
      {:scrivener, "~> 2.0"},
      {:scrivener_html, "~> 1.1"},
