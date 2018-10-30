@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= label f, :tags, class: "control-label" %>
-    <%= text_input f, :tags, class: "form-control" %>
+    <%= inputs_for f, :tags, class: "form-control" %>
     <%= error_tag f, :tags %>
   </div>
 
